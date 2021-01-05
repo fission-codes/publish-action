@@ -1,26 +1,31 @@
-![](https://github.com/fission-suite/PROJECTNAME/raw/master/assets/logo.png?sanitize=true)
+![](https://raw.githubusercontent.com/fission-suite/kit/6a20e9af963dd000903b1c6e64f9fbb2102ba472/images/badge-solid-colored.svg)
 
-# Project Name
+# Publish Action
 
-[![Build Status](https://travis-ci.org/fission-suite/PROJECTNAME.svg?branch=master)](https://travis-ci.org/fission-suite/PROJECTNAME)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/fission-suite/blob/master/LICENSE)
-[![Maintainability](https://api.codeclimate.com/v1/badges/44fb6a8a0cfd88bc41ef/maintainability)](https://codeclimate.com/github/fission-suite/PROJECTNAME/maintainability)
 [![Built by FISSION](https://img.shields.io/badge/⌘-Built_by_FISSION-purple.svg)](https://fission.codes)
 [![Discord](https://img.shields.io/discord/478735028319158273.svg)](https://discord.gg/zAQBDEq)
 [![Discourse](https://img.shields.io/discourse/https/talk.fission.codes/topics)](https://talk.fission.codes)
 
-An amazing description goes here!
+This action publishes your app on Fission. 
 
-[Try it out!](https://linktoalivedemo.example.com)
+*Note* You need to have an account and app already registered. See the [Getting Started](https://guide.fission.codes/developers/getting-started) section of the Fission Guide.
 
 # QuickStart
 
-```shell
-# IPFS on MacOS, otherwise https://docs.ipfs.io/introduction/install/
-brew install ipfs
-brew service start ipfs
+``` yaml
+- uses: fission-suite/publish-action@v1
+  with:
+      machine_key: ${{ secrets.FISSION_KEY }}
 ```
 
-# Table of Contents
+## Inputs 
 
-# How To
+### `machine_key`
+
+**Required** The base64 encoded "machine key" for the app owner.
+
+Once your user and app are registered, you can use the following command to get your key (base64 encoded):
+
+`cat ~/.config/fission/key/machine_id.ed25519|base64`
+
+

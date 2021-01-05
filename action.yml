@@ -1,0 +1,10 @@
+name: 'Publish on Fission'
+description: 'Publish a folder to fission'
+author: walkah
+inputs:
+  machine_key:
+    description: 'A base64 encoded machine key for deploying'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
