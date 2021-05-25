@@ -28,4 +28,11 @@ Once your user and app are registered, you can use the following command to get 
 
 `cat ~/.config/fission/key/machine_id.ed25519|base64`
 
+### `workdir`
+
+*Optional* Set the working directory for publish. This is only required if your fission.yaml file is not in the root directory for the repository.
+
+### `remote`
+
+*Optional* Set the remote (Fission API endpoint) to use (leave this blank unless you know you need it.).
 

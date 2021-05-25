@@ -3,8 +3,15 @@ description: 'Publish a folder to fission'
 author: walkah
 inputs:
   machine_key:
-    description: 'A base64 encoded machine key for deploying'
+    description: 'A base64 encoded machine key for deploying.'
     required: true
+  workdir:
+    description: 'Working directory containing fission.yaml file.'
+    required: false
+    default: '.'
+  remote:
+    description: 'The remote environment to use for API calls.'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'

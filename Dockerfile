@@ -1,13 +1,14 @@
-FROM haskell:latest
+FROM ubuntu:20.04
 
-ENV CLI_VERSION 2.9.1.0
-ENV CLI_NAME fission-cli-linux-x86_64
+ENV CLI_VERSION 2.14.1
+ENV CLI_NAME fission-cli-ubuntu-20.04
+ENV LANG=C.UTF-8
 
 RUN apt-get update \
-    && apt-get install -y libpq5 libtinfo5 wget
+    && apt-get install -y curl libpq5 libtinfo-dev netbase
 
 RUN set -x \
-    && wget -q "https://github.com/fission-suite/fission/releases/download/$CLI_VERSION/$CLI_NAME" \
+    && curl -fSL "https://github.com/fission-suite/fission/releases/download/$CLI_VERSION/$CLI_NAME" -o $CLI_NAME \
     && chmod +x $CLI_NAME \
     && mv $CLI_NAME /usr/local/bin/fission
 
