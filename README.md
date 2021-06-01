@@ -8,7 +8,7 @@
 
 This action publishes your app on Fission. 
 
-*Note* You need to have an account and app already registered. See the [Getting Started](https://guide.fission.codes/developers/getting-started) section of the Fission Guide.
+*Note* You need to have an account already registered. See the [Getting Started](https://guide.fission.codes/developers/getting-started) section of the Fission Guide.
 
 # QuickStart
 
@@ -27,6 +27,16 @@ This action publishes your app on Fission.
 Once your user and app are registered, you can use the following command to get your key (base64 encoded):
 
 `cat ~/.config/fission/key/machine_id.ed25519|base64`
+
+Copy the resulting value into Github Secrets for your project (or run `gh secret set` if using the github cli).
+
+### `app_url`
+
+*Optional* The URL of an already registered app. You can use this option instead of committing your `fission.yaml` file to git. This is especially useful if you want to deploy different branches to different URLs. 
+
+### `build_dir`
+
+*Optional* The build output directory for your app. This is the same value as the `build` valid in `fission.yaml`.
 
 ### `workdir`
 

@@ -1,17 +1,24 @@
-name: 'Publish on Fission'
-description: 'Publish a folder to fission'
+name: "Publish on Fission"
+description: "Publish a folder to fission"
 author: walkah
 inputs:
   machine_key:
-    description: 'A base64 encoded machine key for deploying.'
+    description: "A base64 encoded machine key for deploying."
     required: true
-  workdir:
-    description: 'Working directory containing fission.yaml file.'
+  app_url:
+    description: "The URL of an already fission app."
     required: false
-    default: '.'
+  build_dir:
+    description: "The build output directory for fission publish."
+    required: false
+    default: "."
+  workdir:
+    description: "Working directory where fission commands (publish) should run"
+    required: false
+    default: "."
   remote:
-    description: 'The remote environment to use for API calls.'
+    description: "The remote environment to use for API calls."
     required: false
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"

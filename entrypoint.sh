@@ -27,5 +27,14 @@ if [ ! -z "$INPUT_WORKDIR" ]; then
 	cd $INPUT_WORKDIR
 fi
 
+if [ ! -f "fission.yaml" ]; then
+	if [ ! -z "$INPUT_APP_URL" ]; then
+		echo -e "url: $INPUT_APP_URL\nbuild: $INPUT_BUILD_DIR" > fission.yaml
+	else
+		# App is already registered, so 
+		/usr/local/bin/fission app register -b $INPUT_BUILD_DIR $remote 
+	fi
+fi
+
 # Publish the app
 /usr/local/bin/fission app publish $remote
