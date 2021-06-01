@@ -38,3 +38,7 @@ fi
 
 # Publish the app
 /usr/local/bin/fission app publish $remote
+
+# Set the app url output 
+app_url=$(awk '/^url:/ { print $2 }' fission.yaml)
+echo "::set-output name=app_url::$app_url"

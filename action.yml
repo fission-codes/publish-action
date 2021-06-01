@@ -19,6 +19,9 @@ inputs:
   remote:
     description: "The remote environment to use for API calls."
     required: false
+outputs:
+  app_url:
+    description: "App URL for the published app."
 runs:
   using: "docker"
   image: "Dockerfile"
