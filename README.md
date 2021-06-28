@@ -20,7 +20,7 @@ This action publishes your app on Fission.
 
 ## Inputs 
 
-### `machine_key`
+### `machine_key` (`fission_key`)
 
 **Required** The base64 encoded "machine key" for the app owner.
 
@@ -28,7 +28,7 @@ Once your user and app are registered, you can use the following command to get 
 
 `cat ~/.config/fission/key/machine_id.ed25519|base64`
 
-Copy the resulting value into Github Secrets for your project (or run `gh secret set` if using the github cli).
+Copy the resulting value into Github Secrets for your project (or run `gh secret set` if using the GitHub CLI). This is the `FISSION_KEY` for the action.
 
 ### `app_url`
 
