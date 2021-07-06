@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-ENV CLI_VERSION 2.14.1
+ENV CLI_VERSION 2.14.2
 ENV CLI_NAME fission-cli-ubuntu-20.04
 ENV LANG=C.UTF-8
 
