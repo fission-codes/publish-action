@@ -15,12 +15,12 @@ This action publishes your app on Fission.
 ``` yaml
 - uses: fission-suite/publish-action@v1
   with:
-      machine_key: ${{ secrets.FISSION_KEY }}
+      machine_key: ${{ secrets.FISSION_MACHINE_KEY }}
 ```
 
 ## Inputs 
 
-### `machine_key` (`fission_key`)
+### `machine_key`
 
 **Required** The base64 encoded "machine key" for the app owner.
 
