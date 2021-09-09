@@ -1,0 +1,14 @@
+name: "example"
+on: [push]
+jobs:
+  publish:
+    name: "publish"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "publish"
+        uses: ./
+        with:
+          machine_key: ${{ secrets.MACHINE_KEY }}
+          remote: "staging"
+          workdir: ./example
+          app_url: publish.fissionapp.net
