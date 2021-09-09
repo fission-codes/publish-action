@@ -2,13 +2,15 @@ name: "example"
 on: [push]
 jobs:
   publish:
-    name: "publish"
+    name: Example Publish
     runs-on: ubuntu-latest
     steps:
-      - name: "publish"
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish
         uses: ./
         with:
           machine_key: ${{ secrets.MACHINE_KEY }}
-          remote: "staging"
+          remote: staging
           workdir: ./example
           app_url: publish.fissionapp.net
