@@ -1,14 +1,8 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-KEYFILE=$(mktemp -d)/machine_id.ed25519
-
 # Ensure we're in workspace dir
 cd $GITHUB_WORKSPACE
-
-# Add the key from the environment variable
-# *NOTE* The key must be base64 encoded (so we decode here)
-echo $INPUT_MACHINE_KEY | base64 --decode >$KEYFILE
 
 # Use defined remote
 remote=""
@@ -16,8 +10,20 @@ if [ ! -z "$INPUT_REMOTE" ]; then
 	remote="-R $INPUT_REMOTE"
 fi
 
+# Run verbose mode
+verbose=""
+if [ ! -z "$INPUT_VERBOSE" ]; then
+	verbose="-v"
+	echo "SETTING $verbose VERBOSE === "
+fi
+
+# Add the key from the environment variable
+# *NOTE* The key must be base64 encoded (so we decode here)
+KEYFILE=$(mktemp -d)/machine_id.ed25519
+echo $INPUT_MACHINE_KEY | base64 --decode >$KEYFILE
+
 # Make sure that the fission install is set up properly
-/usr/local/bin/fission setup --with-key $KEYFILE $remote
+/usr/local/bin/fission setup --with-key $KEYFILE $remote $verbose
 
 # Remove key file
 rm $KEYFILE
@@ -32,12 +38,12 @@ if [ ! -f "fission.yaml" ]; then
 		echo -e "url: $INPUT_APP_URL\nbuild: $INPUT_BUILD_DIR" > fission.yaml
 	else
 		# App is already registered, so 
-		/usr/local/bin/fission app register -b $INPUT_BUILD_DIR $remote 
+		/usr/local/bin/fission app register -b $INPUT_BUILD_DIR $remote $verbose
 	fi
 fi
 
 # Publish the app
-/usr/local/bin/fission app publish $remote
+/usr/local/bin/fission app publish $remote $verbose
 
 # Set the app url output 
 app_url=$(awk '/^url:/ { print $2 }' fission.yaml)
