@@ -46,6 +46,10 @@ Copy the resulting value into Github Secrets for your project (or run `gh secret
 
 *Optional* Set the remote (Fission API endpoint) to use (leave this blank unless you know you need it.).
 
+### `verbose`
+
+*Optional* Enables verbose output from the fission CLI (useful for debugging publishing errors).
+
 ## Outputs 
 
 ### `app_url`

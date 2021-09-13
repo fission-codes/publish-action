@@ -14,3 +14,4 @@ jobs:
           remote: staging
           workdir: ./example
           app_url: publish.fissionapp.net
+          verbose: true

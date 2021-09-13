@@ -19,6 +19,9 @@ inputs:
   remote:
     description: "The remote environment to use for API calls."
     required: false
+  verbose:
+    description: "Run fission CLI commands in verbose mode (good for debugging)."
+    required: false
 outputs:
   app_url:
     description: "App URL for the published app."
