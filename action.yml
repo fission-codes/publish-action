@@ -22,9 +22,14 @@ inputs:
   verbose:
     description: "Run fission CLI commands in verbose mode (good for debugging)."
     required: false
+  token:
+    description: "A Github access token."
+    required: false
+    default: ${{github.token}}
+
 outputs:
   app_url:
     description: "App URL for the published app."
 runs:
-  using: "docker"
-  image: "Dockerfile"
+  using: "node12"
+  main: "dist/index.js"
