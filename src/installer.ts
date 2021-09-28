@@ -30,7 +30,7 @@ export const getFissionCLI = async () => {
     const asset = release.assets.find((a) => a.name == ASSEST_NAME);
     if (asset) {
       downloadPath = await tc.downloadTool(asset.browser_download_url);
-      exec.exec("chmod", ["a+x", downloadPath]);
+      await exec.exec("chmod", ["+x", downloadPath]);
     } else {
       core.info("Unable to find release download.");
     }

@@ -4595,7 +4595,6 @@ const run = () => __awaiter(void 0, void 0, void 0, function* () {
         if (workingDir) {
             process.chdir(workingDir);
         }
-        console.log(process.cwd());
         let config;
         const configPath = path.join(process.cwd(), "fission.yaml");
         const appURL = core.getInput("APP_URL");
@@ -18764,7 +18763,7 @@ const getFissionCLI = () => __awaiter(void 0, void 0, void 0, function* () {
         const asset = release.assets.find((a) => a.name == ASSEST_NAME);
         if (asset) {
             downloadPath = yield tc.downloadTool(asset.browser_download_url);
-            exec.exec("chmod", ["a+x", downloadPath]);
+            yield exec.exec("chmod", ["a+x", downloadPath]);
         }
         else {
             core.info("Unable to find release download.");
