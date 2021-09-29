@@ -2,5 +2,5 @@
 
 pkgs.mkShell {
   name = "publish-action";
-  buildInputs = [ pkgs.act pkgs.bashInteractive ];
+  buildInputs = with pkgs; [ act bashInteractive nodejs-12_x ];
 }
