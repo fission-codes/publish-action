@@ -22,6 +22,7 @@ inputs:
   verbose:
     description: "Run fission CLI commands in verbose mode (good for debugging)."
     required: false
+    default: "false"
   token:
     description: "A Github access token."
     required: false
