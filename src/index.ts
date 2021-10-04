@@ -45,9 +45,11 @@ const run = async () => {
 
     core.setOutput("app_url", config.url);
   } catch (error) {
-    if (error instanceof Error) {
-      core.setFailed(error.message);
+    let errorMessage = "failed to publish";
+    if (error instanceof Error && error.message) {
+      errorMessage = error.message;
     }
+    core.setFailed(errorMessage);
   }
 };
 
