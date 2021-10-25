@@ -15,7 +15,7 @@ This action publishes your app on Fission.
 ``` yaml
 - uses: fission-suite/publish-action@v1
   with:
-      machine_key: ${{ secrets.FISSION_KEY }}
+      machine_key: ${{ secrets.FISSION_MACHINE_KEY }}
 ```
 
 ## Inputs 
@@ -26,9 +26,9 @@ This action publishes your app on Fission.
 
 Once your user and app are registered, you can use the following command to get your key (base64 encoded):
 
-`cat ~/.config/fission/key/machine_id.ed25519|base64`
+`base64 ~/.config/fission/key/machine_id.ed25519`
 
-Copy the resulting value into Github Secrets for your project (or run `gh secret set` if using the github cli).
+Copy the resulting value into Github Secrets for your project (or run `gh secret set` if using the GitHub CLI).
 
 ### `app_url`
 
