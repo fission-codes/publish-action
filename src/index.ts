@@ -36,6 +36,13 @@ const run = async () => {
       } else {
         await runFission(["app", "register"]);
       }
+    } else if (appURL || buildDir) {
+      // Override the app url (even though fission.yaml exists).
+      const file = fs.readFileSync(configPath, "utf8");
+      config = YAML.parse(file);
+      config.url = appURL;
+      config.build = buildDir;
+      fs.writeFileSync(configPath, YAML.stringify(config));
     }
 
     await runFission(["app", "publish"]);
