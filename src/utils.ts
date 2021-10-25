@@ -29,6 +29,6 @@ export const statusUpdate = async (
     sha: context.sha,
     state,
     target_url,
-    description: "🚀 Publishing to Fission",
+    description: "Publish to Fission",
   });
 };
