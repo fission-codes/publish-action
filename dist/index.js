@@ -3553,8 +3553,21 @@ const statusUpdate = (state, target_url = "") => __awaiter(void 0, void 0, void 
     const githubToken = core.getInput("token");
     const octokit = github.getOctokit(githubToken);
     const context = github.context;
+    let description = "";
+    switch (state) {
+        case "pending":
+            description = "Working...";
+            break;
+        case "success":
+            description = "Success!";
+            break;
+        case "failure":
+            description = "Failed.";
+            break;
+    }
     yield octokit.rest.repos.createCommitStatus(Object.assign(Object.assign({}, context.repo), { sha: context.sha, state,
-        target_url, description: "Publish to Fission" }));
+        target_url,
+        description, context: "Publish to Fission" }));
 });
 exports.statusUpdate = statusUpdate;
 

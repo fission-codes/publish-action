@@ -24,11 +24,26 @@ export const statusUpdate = async (
   const githubToken = core.getInput("token");
   const octokit = github.getOctokit(githubToken);
   const context = github.context;
+
+  let description = "";
+  switch (state) {
+    case "pending":
+      description = "Working...";
+      break;
+    case "success":
+      description = "Success!";
+      break;
+    case "failure":
+      description = "Failed.";
+      break;
+  }
+
   await octokit.rest.repos.createCommitStatus({
     ...context.repo,
     sha: context.sha,
     state,
     target_url,
-    description: "Publish to Fission",
+    description,
+    context: "Publish to Fission",
   });
 };
