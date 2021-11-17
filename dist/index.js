@@ -18937,7 +18937,7 @@ const assert = __importStar(__webpack_require__(357));
 const fs = __importStar(__webpack_require__(747));
 const path = __importStar(__webpack_require__(622));
 const utils_1 = __webpack_require__(163);
-const ASSEST_NAME = "fission-cli-ubuntu-20.04-x86_64";
+const ASSET_NAME = "fission-cli-ubuntu-20.04";
 const getFissionCLI = () => __awaiter(void 0, void 0, void 0, function* () {
     const githubToken = core.getInput("token");
     const octokit = github.getOctokit(githubToken);
@@ -18953,7 +18953,7 @@ const getFissionCLI = () => __awaiter(void 0, void 0, void 0, function* () {
     if (!toolPath) {
         // Get the URL for the actual CLI version
         let downloadPath = "";
-        const asset = release.assets.find((a) => a.name == ASSEST_NAME);
+        const asset = release.assets.find((a) => a.name == ASSET_NAME);
         if (asset) {
             downloadPath = yield tc.downloadTool(asset.browser_download_url);
             yield exec.exec("chmod", ["+x", downloadPath]);
