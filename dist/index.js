@@ -18937,7 +18937,7 @@ const assert = __importStar(__webpack_require__(357));
 const fs = __importStar(__webpack_require__(747));
 const path = __importStar(__webpack_require__(622));
 const utils_1 = __webpack_require__(163);
-const ASSET_NAME = "fission-cli-ubuntu-20.04";
+const ASSET_NAME = "fission-cli-ubuntu-20.04-x86_64";
 const getFissionCLI = () => __awaiter(void 0, void 0, void 0, function* () {
     const githubToken = core.getInput("token");
     const octokit = github.getOctokit(githubToken);

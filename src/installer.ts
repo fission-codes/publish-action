@@ -7,7 +7,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { runFission } from "./utils";
 
-const ASSET_NAME = "fission-cli-ubuntu-20.04";
+const ASSET_NAME = "fission-cli-ubuntu-20.04-x86_64";
 
 export const getFissionCLI = async () => {
   const githubToken = core.getInput("token");
