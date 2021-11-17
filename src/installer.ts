@@ -7,7 +7,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { runFission } from "./utils";
 
-const ASSEST_NAME = "fission-cli-ubuntu-20.04";
+const ASSET_NAME = "fission-cli-ubuntu-20.04";
 
 export const getFissionCLI = async () => {
   const githubToken = core.getInput("token");
@@ -27,7 +27,7 @@ export const getFissionCLI = async () => {
   if (!toolPath) {
     // Get the URL for the actual CLI version
     let downloadPath = "";
-    const asset = release.assets.find((a) => a.name == ASSEST_NAME);
+    const asset = release.assets.find((a) => a.name == ASSET_NAME);
     if (asset) {
       downloadPath = await tc.downloadTool(asset.browser_download_url);
       await exec.exec("chmod", ["+x", downloadPath]);
