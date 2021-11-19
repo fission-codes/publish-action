@@ -1,6 +1,6 @@
 {
   "name": "publish-action",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "private": true,
   "description": "Publish to Fission",
   "main": "lib/index.js",
