@@ -30,6 +30,8 @@ Once your user and app are registered, you can use the following command to get 
 
 Copy the resulting value into Github Secrets for your project (or run `gh secret set` if using the GitHub CLI).
 
+*Note* Currently the machine key must come from a root account that was created using the Fission CLI.  See Troubleshooting below for more info.
+
 ### `app_url`
 
 *Optional* The URL of an already registered app. You can use this option instead of committing your `fission.yaml` file to git. This is especially useful if you want to deploy different branches to different URLs. 
@@ -55,3 +57,15 @@ Copy the resulting value into Github Secrets for your project (or run `gh secret
 ### `app_url`
 
 The url of the published app - particularly useful if your repository doesn't have a fission.yaml file and you are using generated urls. 
+
+## Troubleshooting
+
+### Invalid key file provided
+
+When you run your GitHub action, you receive the following error.
+
+```
+🚫 Invalid key file provided.
+```
+
+Currently the publish action will only work for machine keys associated with root accounts that were created using the Fission CLI, not a web browser.  If you are experiencing this issue, jump into the #support channel in [Discord](https://discord.gg/daDMAjE) and we'll get things squared away for you.
