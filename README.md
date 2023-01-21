@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/fission-suite/kit/6a20e9af963dd000903b1c6e64f9fbb2102ba472/images/badge-solid-colored.svg)
+![](https://talk.fission.codes/uploads/default/original/2X/2/23521a166f511f226a3ace5d4b7ef59cd304b312.png)
 
 # Publish Action
 
