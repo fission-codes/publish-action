@@ -1,4 +1,4 @@
-![](https://talk.fission.codes/uploads/default/original/2X/2/23521a166f511f226a3ace5d4b7ef59cd304b312.png)
+![](https://talk.fission.codes/uploads/default/original/2X/e/e807e92499ec6fd739bada66fe7b9dc136172948.png)
 
 # Publish Action
 
