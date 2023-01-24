@@ -1,10 +1,12 @@
-![](https://talk.fission.codes/uploads/default/original/2X/e/e807e92499ec6fd739bada66fe7b9dc136172948.png)
+<div align="center">
+  <img src="https://github.com/fission-codes/kit/blob/main/images/logo-icon-coloured.png?raw=true" alt="Fission logo" width="100" />
 
-# Publish Action
+  <h1>Publish Action</h1>
 
 [![Built by FISSION](https://img.shields.io/badge/⌘-Built_by_FISSION-purple.svg)](https://fission.codes)
 [![Discord](https://img.shields.io/discord/478735028319158273.svg)](https://discord.gg/zAQBDEq)
 [![Discourse](https://img.shields.io/discourse/https/talk.fission.codes/topics)](https://talk.fission.codes)
+</div>
 
 This action publishes your app on Fission. 
 
