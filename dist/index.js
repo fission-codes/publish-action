@@ -13591,44 +13591,44 @@ const assert = __importStar(__nccwpck_require__(9491));
 const fs = __importStar(__nccwpck_require__(7147));
 const path = __importStar(__nccwpck_require__(1017));
 const utils_1 = __nccwpck_require__(1314);
-const ASSET_NAME = 'fission-cli-ubuntu-20.04-x86_64';
+const ASSET_NAME = "fission-cli-ubuntu-20.04-x86_64";
 const getFissionCLI = () => __awaiter(void 0, void 0, void 0, function* () {
-    const githubToken = core.getInput('token');
+    const githubToken = core.getInput("token");
     const octokit = github.getOctokit(githubToken);
     // Grab the latest release from github
     const { data: release } = yield octokit.rest.repos.getLatestRelease({
-        owner: 'fission-suite',
-        repo: 'fission',
+        owner: "fission-suite",
+        repo: "fission",
     });
-    core.info(`HELLO22 Using fission CLI version: ${release.tag_name}`);
+    core.info(`Using fission CLI version: ${release.tag_name}`);
     // Check the tool cache for the fission CLI.
     let toolPath;
-    toolPath = tc.find('fission-cli', release.tag_name);
+    toolPath = tc.find("fission-cli", release.tag_name);
     if (!toolPath) {
         // Get the URL for the actual CLI version
-        let downloadPath = '';
+        let downloadPath = "";
         const asset = release.assets.find((a) => a.name == ASSET_NAME);
         if (asset) {
             downloadPath = yield tc.downloadTool(asset.browser_download_url);
-            yield exec.exec('chmod', ['+x', downloadPath]);
+            yield exec.exec("chmod", ["+x", downloadPath]);
         }
         else {
-            core.info('Unable to find release download.');
+            core.info("Unable to find release download.");
         }
         if (downloadPath) {
-            toolPath = yield tc.cacheFile(downloadPath, 'fission', 'fission-cli', release.tag_name);
+            toolPath = yield tc.cacheFile(downloadPath, "fission", "fission-cli", release.tag_name);
         }
     }
     core.addPath(toolPath);
 });
 exports.getFissionCLI = getFissionCLI;
 const importKey = (key) => __awaiter(void 0, void 0, void 0, function* () {
-    const tempDir = process.env['RUNNER_TEMP'] || '';
-    assert.ok(tempDir, 'Expected RUNNER_TEMP to be defined');
-    const keyFile = path.join(tempDir, 'machine_id.ed25519');
-    let buff = Buffer.from(key, 'base64');
+    const tempDir = process.env["RUNNER_TEMP"] || "";
+    assert.ok(tempDir, "Expected RUNNER_TEMP to be defined");
+    const keyFile = path.join(tempDir, "machine_id.ed25519");
+    let buff = Buffer.from(key, "base64");
     fs.writeFileSync(keyFile, buff);
-    yield (0, utils_1.runFission)(['setup', '--with-key', keyFile]);
+    yield (0, utils_1.runFission)(["setup", "--with-key", keyFile]);
 });
 exports.importKey = importKey;
 
