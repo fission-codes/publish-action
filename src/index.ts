@@ -49,7 +49,7 @@ const run = async () => {
     const file = fs.readFileSync(configPath, "utf8");
     config = YAML.parse(file);
     await statusUpdate("success", `https://${config.url}/`);
-    await core.setOutput("app_url", config.url);
+     core.setOutput("app_url", config.url);
   } catch (error) {
     let errorMessage = "failed to publish";
     if (error instanceof Error && error.message) {

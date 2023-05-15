@@ -19,7 +19,7 @@ export const getFissionCLI = async () => {
     repo: 'fission',
   })
 
-  core.info(`HELLO Using fission CLI version: ${release.tag_name}`)
+  core.info(`HELLO22 Using fission CLI version: ${release.tag_name}`)
 
   // Check the tool cache for the fission CLI.
   let toolPath: string
