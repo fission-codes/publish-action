@@ -18,6 +18,7 @@ export const runFission = async (opts: Array<string>) => {
   execOptions.listeners = {
     stdout: (data: Buffer) => {
       const text =  data.toString()
+      console.log("🚀 ~ file: utils.ts:21 ~ runFission ~ text:", text)
       const regex = /\b[bafy]+\w{55}\b/
       const match = text.match(regex);
       if (match) {

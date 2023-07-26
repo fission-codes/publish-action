@@ -13691,6 +13691,7 @@ const runFission = (opts) => __awaiter(void 0, void 0, void 0, function* () {
     execOptions.listeners = {
         stdout: (data) => {
             const text = data.toString();
+            console.log("🚀 ~ file: utils.ts:21 ~ runFission ~ text:", text);
             const regex = /\b[bafy]+\w{55}\b/;
             const match = text.match(regex);
             if (match) {
