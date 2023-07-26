@@ -13687,8 +13687,19 @@ const runFission = (opts) => __awaiter(void 0, void 0, void 0, function* () {
     if (verbose) {
         defaultOpts.push("--verbose");
     }
+    const execOptions = {};
+    execOptions.listeners = {
+        stdout: (data) => {
+            const text = data.toString();
+            const regex = /\b[bafy]+\w{55}\b/;
+            const match = text.match(regex);
+            if (match) {
+                core.setOutput('cid', match[0]);
+            }
+        }
+    };
     const options = opts.concat(defaultOpts);
-    yield exec.exec("fission", options);
+    yield exec.exec("fission", options, execOptions);
 });
 exports.runFission = runFission;
 const statusUpdate = (state, target_url = "") => __awaiter(void 0, void 0, void 0, function* () {

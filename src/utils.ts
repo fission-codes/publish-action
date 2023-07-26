@@ -13,8 +13,20 @@ export const runFission = async (opts: Array<string>) => {
   if (verbose) {
     defaultOpts.push("--verbose");
   }
+
+  const execOptions: exec.ExecOptions = {}
+  execOptions.listeners = {
+    stdout: (data: Buffer) => {
+      const text =  data.toString()
+      const regex = /\b[bafy]+\w{55}\b/
+      const match = text.match(regex);
+      if (match) {
+        core.setOutput('cid', match[0])
+      } 
+    }
+  }
   const options = opts.concat(defaultOpts);
-  await exec.exec("fission", options);
+  await exec.exec("fission", options, execOptions);
 };
 
 export const statusUpdate = async (

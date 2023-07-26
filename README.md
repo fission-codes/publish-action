@@ -60,6 +60,9 @@ Copy the resulting value into Github Secrets for your project (or run `gh secret
 
 The url of the published app - particularly useful if your repository doesn't have a fission.yaml file and you are using generated urls. 
 
+### `app_cid`
+The content identifier of the published app.
+
 ## Troubleshooting
 
 ### Invalid key file provided
