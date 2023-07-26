@@ -11,35 +11,43 @@ export const runFission = async (opts: Array<string>) => {
 
   const verbose = core.getBooleanInput("VERBOSE");
   defaultOpts.push("--verbose");
-  if (verbose) {
-    defaultOpts.push("--verbose");
-  }
+  // if (verbose) {
+  //   defaultOpts.push("--verbose");
+  // }
 
   const execOptions: exec.ExecOptions = {
     silent: true,
-    
   }
+
+  let cid: string | undefined = undefined;
+
   execOptions.listeners = {
     stdline(data) {
-      console.log("🚀 ~ file: utils.ts:24 ~ stdline ~ data:", data)
-      
+      console.log(data)
     },
 
-      errline: (data: string) => {
-      console.log("🚀 ~ file: utils.ts:25 ~ runFission ~ data:", data)
+    errline: (data: string) => {
+      if(verbose) {
+        console.log(data)
+      }
+
       if(data.includes('Directory CID is')){
 
         const regex = /Directory CID is (.+)/
         const match = data.match(regex);
         
         if (match) {
-          core.setOutput('app_cid', match[1])
+          cid = match[1]
         } 
       }
     }
   }
   const options = opts.concat(defaultOpts);
   await exec.exec("fission", options, execOptions);
+  if(cid) {
+    core.setOutput('app_cid', cid)
+    console.log(`🌐 https://dweb.link/ipfs/${cid}`)
+  }
 };
 
 export const statusUpdate = async (
