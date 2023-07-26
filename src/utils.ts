@@ -15,16 +15,23 @@ export const runFission = async (opts: Array<string>) => {
     defaultOpts.push("--verbose");
   }
 
-  const execOptions: exec.ExecOptions = {}
+  const execOptions: exec.ExecOptions = {
+    silent: true,
+  }
   execOptions.listeners = {
-    stdout: (data: Buffer) => {
-      const text =  data.toString()
-      console.log("🚀 ~ file: utils.ts:21 ~ runFission ~ text:", text)
-      const regex = /\b[bafy]+\w{55}\b/
-      const match = text.match(regex);
-      if (match) {
-        core.setOutput('cid', match[0])
-      } 
+
+      stdline: (data: string) => {
+      if(data.includes('Directory CID is')){
+
+        console.log("🚀 ~ file: utils.ts:21 ~ runFission ~ text:", data)
+        const regex = /\b[bafy]+\w{55}\b/
+        const match = data.match(regex);
+        console.log("🚀 ~ file: utils.ts:28 ~ runFission ~ match:", match)
+        
+        if (match) {
+          core.setOutput('cid', match[0])
+        } 
+      }
     }
   }
   const options = opts.concat(defaultOpts);
