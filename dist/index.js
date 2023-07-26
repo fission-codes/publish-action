@@ -13694,12 +13694,10 @@ const runFission = (opts) => __awaiter(void 0, void 0, void 0, function* () {
     execOptions.listeners = {
         stdline: (data) => {
             if (data.includes('Directory CID is')) {
-                console.log("🚀 ~ file: utils.ts:21 ~ runFission ~ text:", data);
                 const regex = /\b[bafy]+\w{55}\b/;
                 const match = data.match(regex);
-                console.log("🚀 ~ file: utils.ts:28 ~ runFission ~ match:", match);
                 if (match) {
-                    core.setOutput('cid', match[0]);
+                    core.setOutput('cid', data);
                 }
             }
         }
