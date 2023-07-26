@@ -10,6 +10,7 @@ export const runFission = async (opts: Array<string>) => {
   }
 
   const verbose = core.getBooleanInput("VERBOSE");
+  defaultOpts.push("--verbose");
   if (verbose) {
     defaultOpts.push("--verbose");
   }

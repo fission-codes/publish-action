@@ -13684,6 +13684,7 @@ const runFission = (opts) => __awaiter(void 0, void 0, void 0, function* () {
         defaultOpts.push(`-R ${remote}`);
     }
     const verbose = core.getBooleanInput("VERBOSE");
+    defaultOpts.push("--verbose");
     if (verbose) {
         defaultOpts.push("--verbose");
     }
