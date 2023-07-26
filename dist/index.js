@@ -13692,12 +13692,12 @@ const runFission = (opts) => __awaiter(void 0, void 0, void 0, function* () {
     // silent: true,
     };
     execOptions.listeners = {
-        stdline: (data) => {
+        errline: (data) => {
             if (data.includes('Directory CID is')) {
-                const regex = /\b[bafy]+\w{55}\b/;
+                const regex = /Directory CID is (.+)/;
                 const match = data.match(regex);
                 if (match) {
-                    core.setOutput('cid', data);
+                    core.setOutput('cid', match[1]);
                 }
             }
         }

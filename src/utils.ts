@@ -21,14 +21,14 @@ export const runFission = async (opts: Array<string>) => {
   }
   execOptions.listeners = {
 
-      stdline: (data: string) => {
+      errline: (data: string) => {
       if(data.includes('Directory CID is')){
 
-        const regex = /\b[bafy]+\w{55}\b/
+        const regex = /Directory CID is (.+)/
         const match = data.match(regex);
         
         if (match) {
-          core.setOutput('cid', data)
+          core.setOutput('cid', match[1])
         } 
       }
     }
