@@ -16,16 +16,12 @@ export const runFission = async (opts: Array<string>) => {
   }
 
   const execOptions: exec.ExecOptions = {
-    // silent: true,
+    silent: true,
     
   }
   execOptions.listeners = {
     stdline(data) {
       console.log("🚀 ~ file: utils.ts:24 ~ stdline ~ data:", data)
-      
-    },
-    debug(data) {
-      console.log("🚀 ~ file: utils.ts:28 ~ debug ~ data:", data)
       
     },
 
@@ -37,7 +33,7 @@ export const runFission = async (opts: Array<string>) => {
         const match = data.match(regex);
         
         if (match) {
-          core.setOutput('cid', match[1])
+          core.setOutput('app_cid', match[1])
         } 
       }
     }

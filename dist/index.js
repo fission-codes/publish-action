@@ -13689,14 +13689,11 @@ const runFission = (opts) => __awaiter(void 0, void 0, void 0, function* () {
         defaultOpts.push("--verbose");
     }
     const execOptions = {
-    // silent: true,
+        silent: true,
     };
     execOptions.listeners = {
         stdline(data) {
             console.log("🚀 ~ file: utils.ts:24 ~ stdline ~ data:", data);
-        },
-        debug(data) {
-            console.log("🚀 ~ file: utils.ts:28 ~ debug ~ data:", data);
         },
         errline: (data) => {
             console.log("🚀 ~ file: utils.ts:25 ~ runFission ~ data:", data);
@@ -13704,7 +13701,7 @@ const runFission = (opts) => __awaiter(void 0, void 0, void 0, function* () {
                 const regex = /Directory CID is (.+)/;
                 const match = data.match(regex);
                 if (match) {
-                    core.setOutput('cid', match[1]);
+                    core.setOutput('app_cid', match[1]);
                 }
             }
         }
