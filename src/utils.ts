@@ -16,7 +16,8 @@ export const runFission = async (opts: Array<string>) => {
   }
 
   const execOptions: exec.ExecOptions = {
-    silent: true,
+    // silent: true,
+    
   }
   execOptions.listeners = {
 

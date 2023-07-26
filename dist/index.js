@@ -13689,7 +13689,7 @@ const runFission = (opts) => __awaiter(void 0, void 0, void 0, function* () {
         defaultOpts.push("--verbose");
     }
     const execOptions = {
-        silent: true,
+    // silent: true,
     };
     execOptions.listeners = {
         stdline: (data) => {
