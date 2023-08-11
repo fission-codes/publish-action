@@ -71,3 +71,10 @@ When you run your GitHub action, you receive the following error.
 ```
 
 Currently the publish action will only work for machine keys associated with root accounts that were created using the Fission CLI, not a web browser.  If you are experiencing this issue, jump into the #support channel in [Discord](https://discord.gg/daDMAjE) and we'll get things squared away for you.
+
+### 403 "Resource not accessible by integration" Github API error
+
+At the Github org level, navigate to `https://github.com/organizations/<YOUR_ORG>/settings/actions` and ensure `Read and write permissions` is selected:
+<img width="924" alt="image" src="https://github.com/fission-codes/publish-action/assets/1179291/cdb9909f-44f4-4f8a-9414-da19695a5169">
+
+
