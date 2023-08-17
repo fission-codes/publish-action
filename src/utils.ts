@@ -10,11 +10,42 @@ export const runFission = async (opts: Array<string>) => {
   }
 
   const verbose = core.getBooleanInput("VERBOSE");
-  if (verbose) {
-    defaultOpts.push("--verbose");
+
+  // We need to pass --verbose to fission app publish to get the CID
+  defaultOpts.push("--verbose");
+
+  const execOptions: exec.ExecOptions = {
+    // Makes the actions silent by default, but we can override this with the listener below
+    silent: true,
   }
+
+  let cid: string | undefined = undefined;
+
+  execOptions.listeners = {
+    stdline(data) {
+      console.log(data)
+    },
+
+    errline: (data: string) => {
+      if(verbose) {
+        console.log(data)
+      }
+
+      const regex = /Directory CID is (.+)/
+      const match = data.match(regex);
+      
+      if (match) {
+        cid = match[1]
+      } 
+    }
+  }
+
   const options = opts.concat(defaultOpts);
-  await exec.exec("fission", options);
+  await exec.exec("fission", options, execOptions);
+  if(cid) {
+    core.setOutput('app_cid', cid)
+    console.log(`🌐 https://dweb.link/ipfs/${cid}`)
+  }
 };
 
 export const statusUpdate = async (

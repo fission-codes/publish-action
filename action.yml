@@ -31,6 +31,8 @@ inputs:
 outputs:
   app_url:
     description: "App URL for the published app."
+  app_cid:
+    description: "App CID."
 runs:
   using: "node16"
   main: "dist/index.js"
